@@ -1,0 +1,93 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Node / Angular ###
+node_modules/
+seatour-frontend-angular/node_modules/
+seatour-frontend-angular/.angular/
+seatour-frontend-angular/dist/
+
+### Base de datos local H2 ###
+data/
+uploads/
+*.mv.db
+*.trace.db
+
+### Logs ###
+*.log
+
+### Variables y secretos ###
+.env
+.env.*
+!.env.example
+seatour-frontend-angular/public/videos/hero-seatour.mp4
+
+# Herramientas de asistencia: no forman parte de SeaTour
+codex/
+Codex/
+.codex/
+.codex-tmp/
+.agents/
+AGENTS.md
+**/AGENTS.md
+**/.codex/
+**/.codex-tmp/
+**/codex/
+**/*codex*.log
+**/*codex*history*
+
+# Credenciales y claves locales: nunca publicar
+credentials*.json
+credenciales*.json
+verificacion-local.json
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# Otros resultados y archivos temporales
+*.h2.db
+*.lock.db
+coverage/
+out-tsc/
+.angular/
+.cache/
+.tmp/
+tmp/
+*.tmp
+*.tsbuildinfo
+.DS_Store
+Thumbs.db

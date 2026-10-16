@@ -1,0 +1,254 @@
+<div class="landing-page">
+  <div class="hero-sea-background" aria-hidden="true"></div>
+
+  <!-- CAPAS VISUALES -->
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+
+  <!-- =========================
+       NAVBAR
+       ========================= -->
+  <header class="landing-navbar">
+    <!-- MARCA -->
+    <a [routerLink]="auth.usuario()?.rol === 'CLIENTE' ? '/app/dashboard' : '/'" class="landing-brand">
+      <div class="brand-symbol">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M3 15c2.5-2 5-2 7.5 0s5 2 7.5 0 3-2 3-2"></path>
+          <path d="M3 10c2.5-2 5-2 7.5 0s5 2 7.5 0 3-2 3-2"></path>
+        </svg>
+      </div>
+
+      <div class="brand-copy">
+        <strong>SeaTour</strong>
+        <span>PERÚ</span>
+      </div>
+    </a>
+
+    <!-- ACCIONES -->
+    <div class="navbar-actions">
+      @if (!auth.tieneRol('OPERADOR', 'ADMIN')) {
+        <a class="navbar-login" routerLink="/app/tours">Reservar</a>
+      }
+      @if (auth.tieneRol('CLIENTE')) {
+        <a class="navbar-login" routerLink="/app/mis-reservas">Mis reservas</a>
+      }
+      @if (auth.tieneRol('OPERADOR', 'ADMIN')) {
+        <a class="navbar-login" [routerLink]="reservasPorRol(auth.usuario()?.rol)">Gestionar reservas</a>
+      }
+      @if (auth.usuario(); as usuario) {
+        <a class="navbar-login" [routerLink]="inicioPorRol(usuario.rol)">Mi panel</a>
+        <span class="session-name">{{ usuario.nombre }}</span>
+        <button class="navbar-login" type="button" (click)="auth.logout()">Cerrar sesión</button>
+      } @else {
+        <a routerLink="/login" class="navbar-login">Iniciar sesión</a>
+        <a routerLink="/registro" class="navbar-register">Regístrate <span aria-hidden="true">→</span></a>
+      }
+    </div>
+  </header>
+
+  <!-- =========================
+       HERO
+       ========================= -->
+  <main class="hero-layout">
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="hero-content">
+      <!-- KICKER -->
+      <div class="hero-kicker">
+        <span>Naturaleza que inspira</span>
+        <div></div>
+      </div>
+
+      <!-- TÍTULO -->
+      <h1 class="hero-title">
+        Explora el norte
+        <br />
+
+        del Perú
+        <span>desde</span>
+
+        <br />
+
+        <span>el mar.</span>
+      </h1>
+
+      <!-- DESCRIPCIÓN -->
+      <p class="hero-description">
+        Tours marítimos, naturaleza única y experiencias inolvidables en un destino extraordinario.
+      </p>
+
+      <!-- ACCIONES -->
+      <div class="hero-actions">
+        <a routerLink="/app/tours" class="primary-action">
+          Descubre experiencias
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m13 6 6 6-6 6"></path>
+          </svg>
+        </a>
+
+        <a routerLink="/app/tours" class="video-action">
+          <span class="video-play">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7Z"></path>
+            </svg>
+          </span>
+
+          <span>Explorar tours</span>
+        </a>
+      </div>
+
+      <!-- SOCIAL PROOF -->
+      <div class="hero-proof">
+        <div class="proof-group">
+          <div class="proof-avatars">
+            <span class="avatar avatar-one"></span>
+            <span class="avatar avatar-two"></span>
+            <span class="avatar avatar-three"></span>
+          </div>
+
+          <div class="proof-copy">
+            <strong>Experiencias reales</strong>
+            <span>Descubre el mar del norte peruano</span>
+          </div>
+        </div>
+
+        <div class="proof-divider"></div>
+
+        <div class="rating-group">
+          <div class="rating-stars">
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+          </div>
+
+          <span class="rating-caption"> Recuerdos inolvidables </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         UBICACIÓN
+         ========================= -->
+    <div class="hero-location-wrap">
+      <div class="hero-location">
+        <div class="location-glow"></div>
+
+        <div class="hero-location-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+        </div>
+
+        <div class="hero-location-copy">
+          <strong>Máncora, Piura</strong>
+          <span>Costa norte del Perú</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================
+         MINI CARDS
+         ========================= -->
+    <div class="hero-mini-cards">
+      <!-- TOURS -->
+      <div class="hero-glass-card">
+        <div class="card-glow"></div>
+
+        <div class="hero-glass-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M4 17h16"></path>
+            <path d="M6 17l2-6h8l2 6"></path>
+            <path d="M10 11V7h4v4"></path>
+            <path d="M3 20h18"></path>
+          </svg>
+        </div>
+
+        <div class="hero-glass-copy">
+          <strong>Tours</strong>
+          <span>marítimos</span>
+        </div>
+      </div>
+
+      <!-- NATURALEZA -->
+      <div class="hero-glass-card">
+        <div class="card-glow"></div>
+
+        <div class="hero-glass-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 4c-7 0-12 3-14 9"></path>
+            <path d="M6 13c3 0 6 1 8 4"></path>
+            <path d="M20 4c0 7-3 12-9 14"></path>
+          </svg>
+        </div>
+
+        <div class="hero-glass-copy">
+          <strong>Naturaleza</strong>
+          <span>única</span>
+        </div>
+      </div>
+
+      <!-- EXPERIENCIAS -->
+      <div class="hero-glass-card">
+        <div class="card-glow"></div>
+
+        <div class="hero-glass-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="8"></circle>
+            <path d="m14 8-2 4-4 2 2-4 4-2Z"></path>
+          </svg>
+        </div>
+
+        <div class="hero-glass-copy">
+          <strong>Experiencias</strong>
+          <span>auténticas</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

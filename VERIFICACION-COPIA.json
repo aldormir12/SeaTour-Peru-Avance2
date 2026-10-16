@@ -1,0 +1,10 @@
+{
+  "rama": "avance2-evidencia",
+  "originales_modificados": [],
+  "adaptaciones_copia": [
+    ".gitignore",
+    "src/main/resources/application.properties"
+  ],
+  "archivos_prohibidos": [],
+  "verificacion": "integridad de archivos; sin builds, pruebas o ejecucion"
+}
